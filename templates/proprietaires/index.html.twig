@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des proprietaires avec BDD{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Gestion des proprietaires</h1>
+        <table class="table table-striped">
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Chatons</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for p in proprietaires %}
+                <tr>
+                    <td>{{ p.nom }}</td>
+                    <td>{{ p.prenom }}</td>
+                    <td><a href="{{ path('app_prorprietaires_chatons', {"id":p.id}) }}" class="btn btn-primary">Voir</a></td>
+                    <td><a href="{{ path('app_proprietaires_modifier', {"id":p.id}) }}" class="btn btn-secondary">Modifier</a></td>
+                    <td><a href="{{ path('app_proprietaires_supprimer', {"id":p.id}) }}" class="btn btn-danger">Supprimer</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ path('app_proprietaires_ajouter') }}" class="btn btn-success">Ajouter un propriétaire</a>
+    </div>
+{% endblock %}

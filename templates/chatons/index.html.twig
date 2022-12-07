@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les chatons {{ categorie.titre }}{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+<div class="container">
+    <h1>Chatons de la catégorie {{ categorie.titre }}</h1>
+    <div class="row">
+        {% for c in chatons %}
+            <div class="col col-3">
+                <div class="card" style="margin-bottom: 15px">
+                    <img src="{{ c.photo }}" alt="{{ c.nom }}" width="300px" height="auto" class="card-img-top">
+                    <div class="card-body">
+                        <h4 class="title-2">{{ c.nom }}</h4>
+                        <a class="btn btn-warning" href="{{ path('app_chatons_modifier', {"id":c.id}) }}">Modifier</a>
+                        <a class="btn btn-danger" href="{{ path('app_chatons_supprimer', {"id":c.id}) }}">Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <a href="{{ path('app_chatons_ajouter') }}" class="btn btn-primary">Ajouter un chaton</a>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Supprimer un chaton{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Supprimer le chaton <i>{{ chaton.nom }}</i> ?</h1>
+        {{ form(formulaire) }}
+        <a href="{{ path("app_categories") }}" class="btn btn-secondary">Retour</a>
+    </div>
+{% endblock %}
